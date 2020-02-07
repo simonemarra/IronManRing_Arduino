@@ -13,33 +13,22 @@ Adafruit_NeoPixel strip(LED_COUNT, RING_PIN, NEO_GRB + NEO_KHZ800);
 //   NEO_RGB     Pixels are wired for RGB bitstream (v1 FLORA pixels, not v2)
 //   NEO_RGBW    Pixels are wired for RGBW bitstream (NeoPixel RGBW products)
 
-
-int waitLimit = 200;
 int16_t blueVal = 0;
 #define BLUE_MIN  105
 #define RED_MIN   15
 #define GREEN_MIN 15
+#define BRIGHTNESS_DEFAULT  125//50
 
 void setup() 
 {
-  // put your setup code here, to run once:
-//  Serial.begin(115200);   // USB Serial (baud rate choosen by Host drivers...)
-//  while (!Serial && (waitLimit > 0)) 
-//  {
-//    waitLimit--;
-//    delay(1);
-//  }
-//
-//  // prints title with ending line break
-//  Serial.println("Iron Man Ring!");
   strip.begin();           // INITIALIZE NeoPixel strip object (REQUIRED)
   strip.show();            // Turn OFF all pixels ASAP
-  strip.setBrightness(50); // Set BRIGHTNESS to about 1/5 (max = 255)
+  strip.setBrightness(BRIGHTNESS_DEFAULT); // Set BRIGHTNESS to about 1/5 (max = 255)
   /*
   for(int b = 0; b < 10; b++)
   {
-    colorWipe(strip.Color(RED_MIN,GREEN_MIN,255), 5); // Blue
-    colorWipe(strip.Color(RED_MIN,GREEN_MIN,BLUE_MIN), 5); // Blue
+    colorWipe(strip.Color(RED_MIN, GREEN_MIN, 255), 5); // Blue
+    colorWipe(strip.Color(RED_MIN, GREEN_MIN, BLUE_MIN), 5); // Blue
   }
   */
 }
@@ -49,11 +38,11 @@ void loop()
   // put your main code here, to run repeatedly:
   for(blueVal = BLUE_MIN; blueVal <= 255; blueVal+=10)
   {
-    colorWipe(strip.Color(RED_MIN,GREEN_MIN,(uint8_t)blueVal),0);
+    colorWipe(strip.Color(RED_MIN, GREEN_MIN, (uint8_t)blueVal),0);
   }
   for(blueVal = 255; blueVal >= BLUE_MIN; blueVal-=10)
   {
-    colorWipe(strip.Color(RED_MIN,GREEN_MIN,(uint8_t)blueVal),0);
+    colorWipe(strip.Color(RED_MIN, GREEN_MIN, (uint8_t)blueVal),0);
   }
 
 }
