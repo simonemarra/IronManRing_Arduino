@@ -1,0 +1,5 @@
+{
+    "sketch": "IronManRing/IronManRing.ino",
+    "board": "arduino:samd:nano_33_iot",
+    "output": "build"
+}
